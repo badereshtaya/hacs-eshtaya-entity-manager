@@ -1,0 +1,14 @@
+{
+  "title": "Eshtaya Entity Manager",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Eshtaya Entity Manager",
+        "description": "Install the Entity Manager panel and manage Home Assistant entity names and Alexa exclusions from inside Home Assistant."
+      }
+    },
+    "abort": {
+      "already_configured": "Eshtaya Entity Manager is already configured."
+    }
+  }
+}
