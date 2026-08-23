@@ -9,16 +9,16 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_registry as er
 
 from .const import DOMAIN
-from .manager_v11 import EntityManagerV11
+from .manager_v12 import EntityManagerV12
 from .panel import async_register_panel, async_unregister_panel
-from .websocket_v11 import async_register_websocket_commands
+from .websocket_v12 import async_register_websocket_commands
 
 _LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Eshtaya Entity Manager from a config entry."""
-    manager = EntityManagerV11(hass)
+    manager = EntityManagerV12(hass)
     await manager.async_initialize()
 
     hass.data.setdefault(DOMAIN, {})["manager"] = manager
