@@ -1,0 +1,14 @@
+{
+  "title": "مدير الكيانات Eshtaya",
+  "config": {
+    "step": {
+      "user": {
+        "title": "مدير الكيانات Eshtaya",
+        "description": "ثبّت لوحة إدارة الكيانات لتغيير أسماء كيانات Home Assistant وإدارة الكيانات المستثناة من Alexa من داخل Home Assistant."
+      }
+    },
+    "abort": {
+      "already_configured": "تم إعداد مدير الكيانات Eshtaya مسبقًا."
+    }
+  }
+}
