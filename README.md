@@ -10,8 +10,10 @@ A Home Assistant custom integration that moves entity-name management and Alexa 
 - Supports per-domain enable/disable rules.
 - Supports automatic exclusion by `entity_category` and keywords.
 - Supports search, filters, domain tabs, device grouping, area visibility, and bulk edits.
-- Generates `/config/hidden_entities.yaml` atomically.
-- Imports an existing `hidden_entities.yaml` on first installation and creates `/config/hidden_entities.yaml.pre_eshtaya_backup` before taking over the file.
+- Generates and keeps **both** `/config/hidden_entities.yaml` and `/config/www/hidden_entities.yaml` synchronized atomically.
+- Creates both YAML files automatically on a fresh installation; an empty ruleset is written as a valid YAML list (`[]`).
+- Imports and exports the legacy `alexa_rules.json` format, including domains, entity overrides, and automatic exclusion defaults.
+- Imports an existing `hidden_entities.yaml` on first installation and creates `/config/hidden_entities.yaml.pre_eshtaya_backup` (and the equivalent backup under `/config/www/` when that copy already existed) before taking over the file.
 - Admin-only panel and WebSocket commands.
 - Arabic and English UI.
 
@@ -38,13 +40,24 @@ Until the repository is included in the HACS default store:
 
 No `configuration.yaml` changes are required.
 
+## Legacy alexa_rules.json migration
+
+Open **Entity Manager → Alexa file** and choose an `alexa_rules.json` file exported by the old PHP manager. The panel previews the number of domains, Force Allow entries and Force Exclude entries before import. Import replaces the current rules and immediately regenerates both synchronized YAML files.
+
+Before a JSON import, the current rules are backed up to:
+
+`/config/eshtaya_entity_manager_rules_backup.json`
+
+The same panel can export the current configuration back to `alexa_rules.json` for migration to another Home Assistant instance.
+
 ## Existing hidden_entities.yaml
 
-On first setup, if `/config/hidden_entities.yaml` already contains a YAML list, the integration imports those entries as **Force Exclude** and starts with automatic/domain exclusions neutralized so the existing effective list is preserved. A one-time backup is created at:
+On first setup, if an existing hidden YAML copy is found, the integration imports its YAML list as **Force Exclude** and starts with automatic/domain exclusions neutralized so the existing effective list is preserved. One-time backups are created for copies that already existed:
 
-`/config/hidden_entities.yaml.pre_eshtaya_backup`
+- `/config/hidden_entities.yaml.pre_eshtaya_backup`
+- `/config/www/hidden_entities.yaml.pre_eshtaya_backup`
 
-After migration, manage the generated file through the panel. Manual edits to `hidden_entities.yaml` can be overwritten.
+After migration, manage the generated files through the panel. Manual edits can be overwritten.
 
 ## Development
 
@@ -57,8 +70,10 @@ custom_components/
     config_flow.py
     const.py
     manager.py
+    manager_v11.py
     panel.py
     websocket.py
+    websocket_v11.py
     manifest.json
     strings.json
     translations/
