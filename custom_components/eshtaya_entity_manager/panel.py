@@ -35,7 +35,7 @@ async def async_register_panel(hass: HomeAssistant) -> None:
         hass=hass,
         frontend_url_path=PANEL_URL_PATH,
         webcomponent_name=PANEL_WEB_COMPONENT,
-        module_url=f"{STATIC_URL}/eshtaya-entity-manager-panel.js?v={VERSION}",
+        module_url=f"{STATIC_URL}/eshtaya-entity-manager-panel-loader.js?v={VERSION}",
         sidebar_title=PANEL_TITLE,
         sidebar_icon=PANEL_ICON,
         require_admin=True,
