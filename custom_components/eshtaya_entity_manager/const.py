@@ -4,7 +4,7 @@ from __future__ import annotations
 
 DOMAIN = "eshtaya_entity_manager"
 NAME = "Eshtaya Entity Manager"
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 
 PANEL_URL_PATH = "eshtaya-entity-manager"
 PANEL_WEB_COMPONENT = "eshtaya-entity-manager-panel"
@@ -15,7 +15,10 @@ STATIC_URL = f"/{DOMAIN}/frontend"
 STORAGE_VERSION = 1
 STORAGE_KEY = DOMAIN
 HIDDEN_FILE = "hidden_entities.yaml"
+PUBLIC_HIDDEN_FILE = "www/hidden_entities.yaml"
 BACKUP_FILE = "hidden_entities.yaml.pre_eshtaya_backup"
+PUBLIC_BACKUP_FILE = "www/hidden_entities.yaml.pre_eshtaya_backup"
+RULES_BACKUP_FILE = "eshtaya_entity_manager_rules_backup.json"
 
 DEFAULT_DISABLED_DOMAINS = {
     "sensor",
