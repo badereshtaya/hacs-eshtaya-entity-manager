@@ -4,7 +4,7 @@ from __future__ import annotations
 
 DOMAIN = "eshtaya_entity_manager"
 NAME = "Eshtaya Entity Manager"
-VERSION = "1.1.0"
+VERSION = "1.2.0"
 
 PANEL_URL_PATH = "eshtaya-entity-manager"
 PANEL_WEB_COMPONENT = "eshtaya-entity-manager-panel"
