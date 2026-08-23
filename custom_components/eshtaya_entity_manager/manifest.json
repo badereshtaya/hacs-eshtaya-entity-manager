@@ -1,0 +1,13 @@
+{
+  "domain": "eshtaya_entity_manager",
+  "name": "Eshtaya Entity Manager",
+  "version": "1.0.0",
+  "config_flow": true,
+  "single_config_entry": true,
+  "integration_type": "service",
+  "dependencies": ["frontend", "panel_custom", "websocket_api"],
+  "documentation": "https://github.com/badereshtaya/hacs-eshtaya-entity-manager",
+  "issue_tracker": "https://github.com/badereshtaya/hacs-eshtaya-entity-manager/issues",
+  "codeowners": ["@badereshtaya"],
+  "iot_class": "local_push"
+}
